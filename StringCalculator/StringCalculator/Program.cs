@@ -6,7 +6,7 @@ namespace StringCalculator
     {
         static void Main(string[] args)
         {
-            string input = "asdf,1\n1\n1,2000, -3";
+            string input = "asdf,1\n1\n1,2000, 3";
 
             string[] separator = { ",", "\n" };
             string[] stringList = input.Split(separator, StringSplitOptions.None);
@@ -17,15 +17,18 @@ namespace StringCalculator
 
             foreach(string item in stringList)
             {
-                
+                // Checks if input is Number vs String
                 bool check = Int32.TryParse(item, out num1);
+                // If string = value is not calculated.
                 if (check == false) {
                     num1 = 0;
                 }
+                // If negative number = give error message and number that is error
                 else if (num1 < 0) {
                     Console.WriteLine("\nCannot calculate negative number: " + num1);
                     num1 = 0;
                     error = true;
+                // If number is over 1000 = value is ignored.
                 } else if (num1 > 1000) {
                     num1 = 0;
                 } else {
@@ -37,6 +40,7 @@ namespace StringCalculator
 
             if (error == false) {
                 Console.WriteLine("\nSum = " + sum);
+            // Gives error for negative numbers
             } else {
                 Console.WriteLine("\nCould not calculate Sum using negative numbers.");
             }
