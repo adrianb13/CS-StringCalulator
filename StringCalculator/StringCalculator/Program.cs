@@ -9,8 +9,9 @@ namespace StringCalculator
     {
         static void Main(string[] args)
         {
-            string input = "//[---][+++]\n2+++5,2\nasdf---1001,10";
+            string input = "//[---]\n2---5,2\nasdf---1001,10";
 
+            //Based on formart, finds any delimiter and multiple delimiters
             var dl = Regex.Matches(input, @"\[([^]]+)]")
                 .OfType<Match>()
                 .Select(m => m.Groups[1].Value)
@@ -18,6 +19,7 @@ namespace StringCalculator
 
             List<string> separate = new List<string>();
 
+            //Puts all delimiters in a list
             foreach(string d in dl) {
                 separate.Add(d);
             }
