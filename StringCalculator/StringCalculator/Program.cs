@@ -15,13 +15,13 @@ namespace StringCalculator
             int sum = 0;
             int num1 = 0;
 
-            for(int i = 0; i < 2; i++)
+            foreach(string item in stringList)
             {
-                bool check = Int32.TryParse(stringList[i], out num1);
+                bool check = Int32.TryParse(item, out num1);
                 if (check == false) {
                     num1 = 0;
                 } else {
-                    num1 = Int32.Parse(stringList[i]);
+                    num1 = Int32.Parse(item);
                 }
 
                 sum = sum + num1;
