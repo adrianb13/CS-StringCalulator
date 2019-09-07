@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace StringCalculator
 {
@@ -6,18 +9,31 @@ namespace StringCalculator
     {
         static void Main(string[] args)
         {
-            string input = "//;\n2;5,2\n100";
+            string input = "//[---][+++]\n2---5,2\nasdf+++100---2000";
 
-            char dl = input[2];
-            char[] separator = { ',', '\n', dl };
-            string[] stringList = input.Split(separator);
+            var dl = Regex.Matches(input, @"\[([^]]+)]")
+                .OfType<Match>()
+                .Select(m => m.Groups[1].Value)
+                .ToArray();
+
+            List<string> separate = new List<string>();
+
+            foreach(string d in dl) {
+                separate.Add(d);
+            }
+            separate.Add(",");
+            separate.Add("\n");
+            
+            string[] separator = separate.ToArray();
+            string[] stringList = input.Split(separator, StringSplitOptions.None);
 
             int sum = 0;
             int num1 = 0;
             bool error = false;
 
-            foreach(string item in stringList)
+            foreach (string item in stringList)
             {
+                //Console.WriteLine(item);
                 // Checks if input is Number vs String
                 bool check = Int32.TryParse(item, out num1);
                 // If string = value is not calculated.
