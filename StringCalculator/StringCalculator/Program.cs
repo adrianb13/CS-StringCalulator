@@ -6,10 +6,11 @@ namespace StringCalculator
     {
         static void Main(string[] args)
         {
-            string input = "asdf,1\n1\n1,2000, 3";
+            string input = "//;\n2;5,2,as;1001";
 
-            string[] separator = { ",", "\n" };
-            string[] stringList = input.Split(separator, StringSplitOptions.None);
+            char dl = input[2];
+            char[] separator = { ',', '\n', dl };
+            string[] stringList = input.Split(separator);
 
             int sum = 0;
             int num1 = 0;
