@@ -6,7 +6,7 @@ namespace StringCalculator
     {
         static void Main(string[] args)
         {
-            string input = "//;\n2;5,2,as;1001";
+            string input = "//;\n2;5,2,-100";
 
             char dl = input[2];
             char[] separator = { ',', '\n', dl };
