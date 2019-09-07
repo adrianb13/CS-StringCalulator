@@ -6,7 +6,7 @@ namespace StringCalculator
     {
         static void Main(string[] args)
         {
-            string input = "asdf,1\n1\n1,2";
+            string input = "asdf,1\n1\n1,2000";
 
             string[] separator = { ",", "\n" };
             string[] stringList = input.Split(separator, StringSplitOptions.None);
