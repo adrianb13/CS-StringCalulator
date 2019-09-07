@@ -9,7 +9,7 @@ namespace StringCalculator
     {
         static void Main(string[] args)
         {
-            string input = "//[---][+++]\n2---5,2\nasdf+++100---2000";
+            string input = "//[---][+++]\n2+++5,2\nasdf----100";
 
             var dl = Regex.Matches(input, @"\[([^]]+)]")
                 .OfType<Match>()
