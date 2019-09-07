@@ -6,7 +6,7 @@ namespace StringCalculator
     {
         static void Main(string[] args)
         {
-            string input = "1,1\n1\n1,1";
+            string input = "asdf,1\n1\n1,2";
 
             string[] separator = { ",", "\n" };
             string[] stringList = input.Split(separator, StringSplitOptions.None);
@@ -21,10 +21,13 @@ namespace StringCalculator
                 bool check = Int32.TryParse(item, out num1);
                 if (check == false) {
                     num1 = 0;
-                } else if (num1 < 0) {
+                }
+                else if (num1 < 0) {
                     Console.WriteLine("\nCannot calculate negative number: " + num1);
                     num1 = 0;
                     error = true;
+                } else if (num1 > 1000) {
+                    num1 = 0;
                 } else {
                     num1 = Int32.Parse(item);
                 }
