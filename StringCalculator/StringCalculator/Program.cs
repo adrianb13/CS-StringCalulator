@@ -6,17 +6,18 @@ namespace StringCalculator
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Please Enter 2 Numbers To Be Added For Calculation:");
-            string input = Console.ReadLine();
+            string input = "1,1\n1\n1,1";
 
-            string[] separator = { "," };
-            string[] stringList = input.Split(",");
+            string[] separator = { ",", "\n" };
+            string[] stringList = input.Split(separator, StringSplitOptions.None);
 
             int sum = 0;
             int num1 = 0;
+            bool error = false;
 
             foreach(string item in stringList)
             {
+                
                 bool check = Int32.TryParse(item, out num1);
                 if (check == false) {
                     num1 = 0;
@@ -26,9 +27,12 @@ namespace StringCalculator
 
                 sum = sum + num1;
             }
-            
-            Console.WriteLine("\nSum = " + sum);
 
+            if (error == false) {
+                Console.WriteLine("\nSum = " + sum);
+            } else {
+                Console.WriteLine("\nCould not calculate Sum using negative numbers.");
+            }
             Console.ReadKey();
 
         }
