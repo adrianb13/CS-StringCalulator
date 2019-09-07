@@ -21,6 +21,10 @@ namespace StringCalculator
                 bool check = Int32.TryParse(item, out num1);
                 if (check == false) {
                     num1 = 0;
+                } else if (num1 < 0) {
+                    Console.WriteLine("\nCannot calculate negative number: " + num1);
+                    num1 = 0;
+                    error = true;
                 } else {
                     num1 = Int32.Parse(item);
                 }
